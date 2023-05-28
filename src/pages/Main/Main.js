@@ -27,7 +27,7 @@ const Main = () => {
         />
         <TitleCategory />
         <Link
-          to="http://localhost:3000/productlist?categoryId=1&subCategoryId=1&limit=9&orderBy=&offset=0"
+          to="/productlist?categoryId=1&subCategoryId=1&limit=9&orderBy=&offset=0"
           onClick={handleLinkClick}
         >
           <video

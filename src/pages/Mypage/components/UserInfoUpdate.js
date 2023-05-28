@@ -14,7 +14,7 @@ const UserInfoUpdate = () => {
 
   //고객정보 불러오기
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/users', {
+    fetch('http://13.209.8.13:3000/users', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -36,7 +36,7 @@ const UserInfoUpdate = () => {
       });
   }, []);
 
-  //비밀번호수정
+  //비밀번호 유효성
   const isValidBtn =
     userInfo.password &&
     userInfo.passwordOk &&
@@ -51,8 +51,9 @@ const UserInfoUpdate = () => {
       alert('비밀번호를 조건에 맞춰 입력해주세요');
       return;
     }
+    //비밀번호 변경
     if (userInfo.password) {
-      fetch('http://10.58.52.241:3000/users/password', {
+      fetch('http://13.209.8.13:3000/users/password', {
         method: 'PATCH',
         headers: {
           Authorization: localStorage.getItem('token'),
@@ -60,15 +61,15 @@ const UserInfoUpdate = () => {
         },
         body: JSON.stringify({ password: userInfo.password }),
       });
-      alert('비밀번호수정이 완료되었습니다.');
+      alert('비밀번호 변경이 완료되었습니다.');
       navigate('/mypage');
     }
   };
 
-  //회원정보수정
+  //회원정보 수정
   const handleUser = () => {
     if (userInfo.address && userInfo.phoneNumber) {
-      fetch('http://10.58.52.241:3000/users/information', {
+      fetch('http://13.209.8.13:3000/users/information', {
         method: 'PATCH',
         headers: {
           Authorization: localStorage.getItem('token'),
@@ -79,7 +80,7 @@ const UserInfoUpdate = () => {
           address: userInfo.address,
         }),
       });
-      alert('회원정보수정이 완료되었습니다.');
+      alert('회원정보 수정이 완료되었습니다.');
       navigate('/mypage');
     }
   };
@@ -116,10 +117,10 @@ const UserInfoUpdate = () => {
             className={`text-lg updatePwd ${btnMode}`}
             onClick={handlePwd}
           >
-            <b>비밀번호변경</b>
+            <b>비밀번호 변경</b>
           </button>
           <button className="text-lg updateInfo" onClick={handleUser}>
-            <b>회원정보수정</b>
+            <b>회원정보 수정</b>
           </button>
         </div>
       </div>

@@ -10,7 +10,7 @@ const LikesProduct = ({
   //장바구니추가(버튼)
   const handleLikesAddCart = () => {
     alert('장바구니에 추가되었습니다.');
-    fetch('http://10.58.52.241:3000/carts', {
+    fetch('http://13.209.8.13:3000/carts', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('token'),

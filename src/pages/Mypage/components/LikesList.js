@@ -4,7 +4,7 @@ import './LikesList.scss';
 
 const LikesList = ({ likesArr, checkItems, setCheckItems, likesGetFetch }) => {
   //체크박스 함수(checkItems: 체크된 id 값만 push, state로 관리)
-  const isAllChecked = checkItems.length === likesArr.length;
+  const isAllChecked = checkItems.length === likesArr ? likesArr.length : 0;
 
   //전체선택 체크박스
   const handleAllCheck = checked => {
@@ -39,7 +39,7 @@ const LikesList = ({ likesArr, checkItems, setCheckItems, likesGetFetch }) => {
       query = query.slice(0, -1);
     }
 
-    fetch(`http://10.58.52.241:3000/likes?${query}`, {
+    fetch(`http://13.209.8.13:3000/likes?${query}`, {
       method: 'DELETE',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -61,7 +61,8 @@ const LikesList = ({ likesArr, checkItems, setCheckItems, likesGetFetch }) => {
           />
           <div className="text-lg">
             <b onClick={() => handleAllCheck(!isAllChecked)}>전체선택</b> (
-            {checkItems.length}/{likesArr ? likesArr.length : 0})
+            {checkItems ? checkItems.length : 0}/
+            {likesArr ? likesArr.length : 0})
           </div>
         </div>
         <div onClick={() => likesDeleteFetch()}>선택삭제</div>

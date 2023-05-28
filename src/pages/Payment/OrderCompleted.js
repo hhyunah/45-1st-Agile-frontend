@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import check from '../../assets/payment/circleCheck.jpg';
 import './OrderCompleted.scss';
@@ -8,9 +8,12 @@ const OrderCompleted = () => {
   const location = useLocation();
   const info = location.state;
 
+  //주문확인하기(마이페이지 연결)
   const handleConfirmOrder = () => {
     navigate('/mypage');
   };
+
+  //쇼핑계속하기(메인페이지 연결)
   const handleContinueShopping = () => {
     navigate('/');
   };

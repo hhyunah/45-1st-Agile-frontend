@@ -14,7 +14,7 @@ const Cart = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/carts', {
+    fetch('http://13.209.8.13:3000/carts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

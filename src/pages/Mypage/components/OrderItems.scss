@@ -2,19 +2,15 @@
 
 .order-items {
   .order-title {
-    @include flex-sort(space-between, none);
+    @include flex-sort(space-between, baseline);
     margin-top: 15px;
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
 
-    .order-title-part {
-      @include flex-sort(space-between, baseline);
-
-      .text-lg {
-        &.order-date {
-          margin-right: 7px;
-        }
+    .text-lg {
+      &.order-date {
+        margin-right: 7px;
       }
     }
   }

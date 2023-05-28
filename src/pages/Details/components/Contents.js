@@ -69,7 +69,7 @@ const Contents = ({
 
   const addToCart = async () => {
     try {
-      const res = await fetch('http://10.58.52.241:3000/carts', {
+      const res = await fetch('http://13.209.8.13:3000/carts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -92,7 +92,7 @@ const Contents = ({
   };
   const fetchCartData = async () => {
     try {
-      const res = await fetch('http://10.58.52.241:3000/carts', {
+      const res = await fetch('http://13.209.8.13:3000/carts', {
         headers: {
           'content-Type': 'application/json;charset=utf-8',
           Authorization: token,
@@ -142,7 +142,7 @@ const Contents = ({
 
   const handleProductsInCarts = async () => {
     try {
-      const res = await fetch('http://10.58.52.241:3000/carts/add', {
+      const res = await fetch('http://13.209.8.13:3000/carts/add', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',

@@ -18,7 +18,7 @@ const ReviewList = ({ bookId, token }) => {
         const offset = (currentPage - 1) * LIMIT;
 
         const res = await fetch(
-          `http://10.58.52.241:3000/books/${bookId}/reviews?limit=${LIMIT}&offset=${offset}`,
+          `http://13.209.8.13:3000/books/${bookId}/reviews?limit=${LIMIT}&offset=${offset}`,
           {
             headers: {
               'Content-Type': 'application/json;charset=utf-8',

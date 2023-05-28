@@ -26,11 +26,13 @@
       padding-top: 10px;
       padding-bottom: 10px;
       border-top: 1px solid rgb(221, 221, 221);
+
       .order-number {
         @include flex-sort(space-between, none);
         margin-top: 5px;
         margin-bottom: 5px;
       }
+
       .payment-amount {
         @include flex-sort(space-between, none);
         margin-top: 5px;

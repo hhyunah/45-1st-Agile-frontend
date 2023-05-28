@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import APIS from '../../../config';
 import StarFullIcon from '../../Main/components/StarFullIcon';
 import SORTOPTION from './SORTOPTION';
 
@@ -12,7 +11,7 @@ const ProductListCont = ({ categoryId, subCategoryId }) => {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState([]);
-  const [selectedSortOption, setSelectedSortOption] = useState('-정렬방식-');
+  const [selectedSortOption, setSelectedSortOption] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const order = searchParams.get('orderBy');
 
@@ -23,12 +22,14 @@ const ProductListCont = ({ categoryId, subCategoryId }) => {
     priceDesc: '높은 가격순',
   };
   const handleLinkClick = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 550);
   };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`${APIS.books}${location.search}`);
+        const res = await fetch(
+          `http://13.209.8.13:3000/books${location.search}`
+        );
         const data = await res.json();
         if (data.data) {
           setVisibleProducts(data.data);
@@ -48,17 +49,16 @@ const ProductListCont = ({ categoryId, subCategoryId }) => {
     const currentPage =
       parseInt(new URLSearchParams(location.search).get('offset'), 10) / 9 +
         1 || 1;
-    const order = searchParams.get('orderBy') || '-정렬방식-';
+    const order = searchParams.get('orderBy') || '';
     setSelectedSortOption(order);
     setCurrentPage(currentPage);
   }, [location.search]);
 
   const handlePageClick = page => {
     const offset = (page - 1) * 9;
-    const searchParams = new URLSearchParams(location.search);
     searchParams.set('offset', offset);
     searchParams.set('orderBy', selectedSortOption);
-    window.location.search = searchParams.toString();
+    setSearchParams(searchParams);
     setCurrentPage(page);
   };
 
@@ -127,6 +127,7 @@ const ProductListCont = ({ categoryId, subCategoryId }) => {
               }`}
               onClick={() => {
                 handlePageClick(page);
+                handleLinkClick();
               }}
             >
               {page}

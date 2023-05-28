@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './MypageTop.scss';
 
-const MypageTop = ({ userInfo, setModal }) => {
-  const handleOnclick = () => {
+const MypageTop = ({ userInfo, setModal, isLoggedIn }) => {
+  const navigate = useNavigate();
+
+  const handleUpdateInfoClick = () => {
+    if (!isLoggedIn) {
+      navigate('/login');
+      return;
+    }
     setModal(true);
   };
 
@@ -27,7 +34,7 @@ const MypageTop = ({ userInfo, setModal }) => {
           </div>
           <div className="phone-number">
             <div>{userInfo.phoneNumber}</div>
-            <div onClick={handleOnclick}>정보수정{' > '}</div>
+            <div onClick={handleUpdateInfoClick}>정보수정{' > '}</div>
           </div>
         </div>
       </div>

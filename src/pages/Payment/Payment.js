@@ -23,24 +23,24 @@ const Payment = () => {
   const [radio, setRadio] = useState(true);
   const [info, setInfo] = useState({});
   const [checkItems, setCheckItems] = useState([]);
-  const [message, setMessage] = useState(1);
 
   const handleInfo = e => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
-  };
 
-  const subMode = {
-    '1주일': 'ONEWEEK',
-    '1개월': 'ONEMONTH',
-    '3개월': 'THREEMONTHS',
+    if (name === 'receiver_phoneNumber') {
+      if (info.receiver_phoneNumber?.length === 10) {
+        let v = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+        setInfo({ ...info, [name]: v });
+      }
+    }
   };
 
   const { productsInfo } = location.state;
 
   //고객정보 불러오기
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/users', {
+    fetch('http://13.209.8.13:3000/users', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -105,7 +105,7 @@ const Payment = () => {
 
     // 상세 -> 결제
     if (!orderMode.mode) {
-      fetch('http://10.58.52.241:3000/orders/direct', {
+      fetch('http://13.209.8.13:3000/orders/direct', {
         method: 'POST',
         headers: {
           Authorization: localStorage.getItem('token'),
@@ -133,7 +133,7 @@ const Payment = () => {
 
     // 장바구니 -> 결제
     else {
-      fetch('http://10.58.52.241:3000/orders', {
+      fetch('http://13.209.8.13:3000/orders', {
         method: 'POST',
         headers: {
           Authorization: localStorage.getItem('token'),
@@ -193,8 +193,6 @@ const Payment = () => {
           setRadio={setRadio}
           radio={radio}
           switchRadio={switchRadio}
-          message={message}
-          setMessage={setMessage}
         />
         {flag && <Subscribe info={info} handleInfo={handleInfo} />}
         <div className="pay-part">

@@ -4,7 +4,6 @@ import ItemTitle from './ItemTitle';
 import './OrderStatus.scss';
 
 const OrderStatus = ({ dataStatus }) => {
-  console.log(dataStatus);
   return (
     <div className="order-status">
       <ItemTitle title="주문내역 조회" />

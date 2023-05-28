@@ -11,6 +11,9 @@
       padding-bottom: 24px;
       border-bottom: 1px solid rgb(221, 221, 221);
       text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

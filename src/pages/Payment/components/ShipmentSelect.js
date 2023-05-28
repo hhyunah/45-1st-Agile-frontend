@@ -2,6 +2,7 @@ import React from 'react';
 import './ShipmentSelect.scss';
 
 const ShipmentSelect = ({ switchRadio, setRadio, radio }) => {
+  // 배송지 선택 라디오 변경
   const handleRadio = () => {
     setRadio(!radio);
     switchRadio();

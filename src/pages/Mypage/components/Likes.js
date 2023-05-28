@@ -9,7 +9,7 @@ const Likes = () => {
 
   //관심상품 불러오기
   const likesGetFetch = () => {
-    fetch('http://10.58.52.241:3000/likes', {
+    fetch('http://13.209.8.13:3000/likes', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -24,7 +24,7 @@ const Likes = () => {
   };
 
   useEffect(() => {
-    likesGetFetch();
+    likesGetFetch(); //관심상품 불러오기 (GET)
   }, []);
 
   return (

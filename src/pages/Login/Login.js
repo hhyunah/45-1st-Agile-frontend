@@ -26,7 +26,7 @@ const Login = () => {
       alert('비밀번호를 입력해주세요!');
       return false;
     } else {
-      fetch('http://10.58.52.241:3000/users/login', {
+      fetch('http://13.209.8.13:3000/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',

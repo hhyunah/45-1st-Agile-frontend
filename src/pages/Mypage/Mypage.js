@@ -15,11 +15,13 @@ import './Mypage.scss';
 const Mypage = () => {
   const location = useLocation();
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인 되어 있는지
   const [modal, setModal] = useState(false); //정보수정 비밀번호 확인 모달창
   const [menuMode, setMenuMode] = useState(0); //메뉴바 바꾸기
   const [userInfo, setUserInfo] = useState({}); //사용자 정보
   const [orderStatus, setOrderStatus] = useState({}); // 주문배송 현황
   const [dataStatus, setDataStatus] = useState([]); // 주문배송물품 현황
+
   const menuList = {
     0: <OrderDelivery setMenuMode={setMenuMode} orderStatus={orderStatus} />, //주문배송 현황
     1: <OrderStatus dataStatus={dataStatus} />, //주문배송 조회
@@ -27,9 +29,15 @@ const Mypage = () => {
     3: <Likes />, //관심 상품
     4: <CustomerService />, //고객센터
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // 토큰이 있으면 true, 없으면 false
+  }, [setIsLoggedIn]);
+
   //고객정보 불러오기
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/users', {
+    fetch('http://13.209.8.13:3000/users', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -54,7 +62,7 @@ const Mypage = () => {
 
   // 주문배송현황 불러오기
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/orders', {
+    fetch('http://13.209.8.13:3000/orders', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),
@@ -75,11 +83,19 @@ const Mypage = () => {
       {modal && <div className="background" />}
       {modal && <ConfirmPassword modal={modal} setModal={setModal} />}
       <div className="mypage">
-        <MypageTop userInfo={userInfo} setModal={setModal} />
+        <MypageTop
+          userInfo={userInfo}
+          setModal={setModal}
+          isLoggedIn={isLoggedIn}
+        />
         <div className="mypage-main">
           <div className="main-left">
             <div className="text-2xl">마이페이지</div>
-            <MenuBar menuMode={menuMode} setMenuMode={setMenuMode} />
+            <MenuBar
+              menuMode={menuMode}
+              setMenuMode={setMenuMode}
+              isLoggedIn={isLoggedIn}
+            />
           </div>
           <div className="main-right">{menuList[menuMode]}</div>
         </div>

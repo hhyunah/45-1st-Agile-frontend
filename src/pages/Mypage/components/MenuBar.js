@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MenuBar.scss';
 
-const MenuBar = ({ menuMode, setMenuMode }) => {
+const MenuBar = ({ menuMode, setMenuMode, isLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleMenu = id => {
@@ -12,6 +12,13 @@ const MenuBar = ({ menuMode, setMenuMode }) => {
     if (id === 5) {
       localStorage.removeItem('token');
       navigate('/');
+      return;
+    } else if (id !== 4) {
+      //로그인 안되어 있을 때, 고객센터 이외의 메뉴모드에서 로그인 페이지로 전환
+      if (!isLoggedIn) {
+        navigate('/login');
+        return;
+      }
     }
   };
 

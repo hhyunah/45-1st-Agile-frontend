@@ -6,16 +6,8 @@ const OrderItems = ({ data }) => {
   return (
     <div className="order-items">
       <div className="order-title">
-        <div className="order-title-part">
-          <div className="text-lg order-date">
-            <b>{data.createdAt} </b>
-          </div>
-          {/* {data.subscribeCycle !== null && (
-            <div className="text-sm order-subCycle">
-              {' '}
-              (구독: {data.subscribeCycle})
-            </div>
-          )} */}
+        <div className="text-lg order-date">
+          <b>{data.createdAt} </b>
         </div>
         <div>{data.status}</div>
       </div>

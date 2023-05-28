@@ -8,7 +8,7 @@ const Subscribes = () => {
 
   //구독상품 불러오기
   useEffect(() => {
-    fetch('http://10.58.52.241:3000/orders/subscribe', {
+    fetch('http://13.209.8.13:3000/orders/subscribe', {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('token'),

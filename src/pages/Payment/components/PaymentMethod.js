@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Point from './Point';
 import Agreement from './Agreement';
 import './PaymentMethod.scss';

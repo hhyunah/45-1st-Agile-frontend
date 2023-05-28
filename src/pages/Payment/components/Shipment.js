@@ -2,15 +2,7 @@ import React from 'react';
 import ShipmentSelect from './ShipmentSelect';
 import './Shipment.scss';
 
-const Shipment = ({
-  info,
-  handleInfo,
-  switchRadio,
-  setRadio,
-  radio,
-  message,
-  setMessage,
-}) => {
+const Shipment = ({ info, handleInfo, switchRadio, setRadio, radio }) => {
   return (
     <div className="shipment">
       <div className="text-xl">배송 정보</div>
@@ -30,6 +22,7 @@ const Shipment = ({
                 value={info[data.type]}
                 onChange={handleInfo}
                 readOnly={radio}
+                maxLength={data.maxLength}
               />
             </div>
           );
@@ -53,7 +46,7 @@ export default Shipment;
 const SHIPMENT_INFO = [
   { id: 1, title: '받는 사람', type: 'receiver_name' },
   { id: 2, title: '주소', type: 'receiver_address' },
-  { id: 3, title: '휴대폰 번호', type: 'receiver_phoneNumber' },
+  { id: 3, title: '휴대폰 번호', type: 'receiver_phoneNumber', maxLength: 13 },
 ];
 
 const SELECT_MSG = [

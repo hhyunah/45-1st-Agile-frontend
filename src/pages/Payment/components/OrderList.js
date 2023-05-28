@@ -2,6 +2,7 @@ import React from 'react';
 import './OrderList.scss';
 
 const OrderList = ({ orderInfo }) => {
+  // ~ 이외의 제품(-1)
   const orderLength = orderInfo.length - 1;
 
   return (

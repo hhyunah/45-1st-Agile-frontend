@@ -5,7 +5,7 @@ import './Footer.scss';
 
 const Footer = ({ isLoggedIn, handleButtonClick }) => {
   const handlePayment = () => {
-    navigate('/mypage');
+    navigate('/mypage', { state: { menuMode: 4 } });
   };
   const location = useLocation();
   const navigate = useNavigate();

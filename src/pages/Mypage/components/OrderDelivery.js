@@ -7,6 +7,7 @@ const OrderDelivery = ({ setMenuMode, orderStatus }) => {
   const handleOnclick = () => {
     setMenuMode(1);
   };
+
   return (
     <div className="order-delivery">
       <ItemTitle title="주문배송 현황" />

@@ -19,6 +19,9 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .product-slider-next {
@@ -35,6 +38,9 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 24px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .product-slider-container {
